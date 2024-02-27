@@ -8,7 +8,7 @@ namespace big
 
 		virtual void execute(const command_arguments&, const std::shared_ptr<command_context> ctx) override
 		{
-			exit(0);
+			TerminateProcess(GetCurrentProcess(), 0);
 		}
 	};
 
