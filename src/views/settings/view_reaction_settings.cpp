@@ -29,14 +29,25 @@ namespace big
 			if (reaction.block_joins)
 				if (ImGui::BeginCombo("BLOCK_JOIN_ALERT"_T.data(), block_join_reasons[reaction.block_join_reason]))
 				{
-					for (const auto& [key, value] : block_join_reasons)
+					block_join_reason_t i = block_join_reason_t::None;
+					for (const auto& reason_str : block_join_reasons)
 					{
-						bool is_selected = (reaction.block_join_reason == key);
+						if (reason_str != nullptr)
+						{
+							const bool is_selected = reaction.block_join_reason == i;
 
-						if (ImGui::Selectable(value, is_selected))
-							reaction.block_join_reason = key;
+							if (ImGui::Selectable(reason_str, is_selected))
+							{
+								reaction.block_join_reason = i;
+							}
+
 						if (is_selected)
+							{
 							ImGui::SetItemDefaultFocus();
+							}
+						}
+
+						i++;
 					}
 					ImGui::EndCombo();
 				}
@@ -63,14 +74,25 @@ namespace big
 			if (reaction.block_joins)
 				if (ImGui::BeginCombo("BLOCK_JOIN_ALERT"_T.data(), block_join_reasons[reaction.block_join_reason]))
 				{	
-					for (const auto& [key, value] : block_join_reasons)
+					block_join_reason_t i = block_join_reason_t::None;
+					for (const auto& reason_str : block_join_reasons)
 					{
-						bool is_selected = (reaction.block_join_reason == key);
+						if (reason_str != nullptr)
+						{
+							const bool is_selected = reaction.block_join_reason == i;
 
-						if (ImGui::Selectable(value, is_selected))
-							reaction.block_join_reason = key;
+							if (ImGui::Selectable(reason_str, is_selected))
+							{
+								reaction.block_join_reason = i;
+							}
+
 						if (is_selected)
+							{
 							ImGui::SetItemDefaultFocus();
+							}
+						}
+
+						i++;
 					}
 					ImGui::EndCombo();
 				}
